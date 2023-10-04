@@ -1,0 +1,18 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        
+        word_dict = {}
+        unique_instances = []
+
+        for x in strs:
+            instance = "".join(sorted(x))
+            if instance in word_dict:
+                word_dict[instance].append(x)
+            else:
+                word_dict[instance] = [x]
+                unique_instances.append(instance)
+
+        result = []
+        for y in unique_instances:
+            result.append(word_dict[y])
+        return result
